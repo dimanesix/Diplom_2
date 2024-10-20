@@ -41,22 +41,3 @@ class TestRegisterUser:
                 response.json()["success"] is False and response.json()["message"] == "Email, password and name are "
                                                                                       "required fields"), ('Нельзя '
                                                                                                             'зарегистрировать пользователя без обязательного поля!')
-
-    # @allure.title('Проверка, что нельзя создать двух одинаковых курьеров')
-    # def test_cannot_create_identical_couriers(self, create_courier, delete_courier):
-    #     with allure.step('Создать курьера'):
-    #         result = create_courier
-    #     with allure.step('Создать нового курьера с точно такими же данными'):
-    #         response = courier.CourierApi().create_courier(result["courier"][0], result["courier"][1],
-    #                                                        result["courier"][2])
-    #     assert (response.status_code == 409 and
-    #             response.json()[
-    #                 "message"] == 'Этот логин уже используется. Попробуйте другой.'), 'Можно создать идентичных курьеров!'
-    #
-    # @allure.title('Проверка, что можно создать курьера без необязательнго поля')
-    # def test_can_create_courier_without_first_name(self, create_login):
-    #     # login = create_login
-    #     with allure.step('Создать курьера без необязательного поля first_name'):
-    #         response = courier.CourierApi().create_courier(create_login, test_data.TEST_PASSWORD, None)
-    #     assert (response.status_code == 201 and
-    #             response.text == '{"ok":true}'), 'Невозможно создать курьера!'
